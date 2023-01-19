@@ -1,9 +1,13 @@
 const http = require("http");
-const uc = require('upper-case')
 
-http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.write(uc.upperCase("Hello Node.js"));
-    res.end();
-}).listen(1000);
-
+http
+  .createServer((req, res) => {
+    console.log(req.url, req.method, req.headers);
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<html>')
+    res.write('<head><title>My First Page</title></head>')
+    res.write('<body><h1 style="text-align: center;">Welcome to Node.js</h1></body>')
+    res.write('</html>')
+    res.end()
+  })
+  .listen(3001);
