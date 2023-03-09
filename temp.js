@@ -1,5 +1,4 @@
 const http = require("http");
+const routes = require("./routes");
 
-http.createServer((req, res) => {
-  console.log(req.url, req.method);
-}).listen(3000);
+http.createServer(routes).listen(3000);
