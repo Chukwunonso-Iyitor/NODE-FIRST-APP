@@ -1,0 +1,29 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body nav {
+  padding: 1.5rem 1rem;
+  background-color: teal;
+}
+body nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+body nav ul li a {
+  text-decoration: none;
+  margin: 0 1rem;
+  color: white;
+}
+body nav ul li a.active {
+  color: yellow;
+}
+body main {
+  padding: 3rem;
+}
+body main input {
+  width: 100%;
+  outline: none;
+  border: 1px solid teal;
+}/*# sourceMappingURL=main.css.map */

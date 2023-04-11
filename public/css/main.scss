@@ -1,0 +1,31 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  nav {
+    padding: 1.5rem 1rem;
+    background-color: teal;
+    ul {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+      li {
+        a {
+          text-decoration: none;
+          margin: 0 1rem;
+          color: white;
+          &.active{
+            color: yellow;
+          }
+        }
+      }
+    }
+  }
+  main{
+    padding: 3rem;
+    input{
+        width: 100%;
+        outline: none;
+        border: 1px solid teal;
+    }
+  }
+}

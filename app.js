@@ -1,38 +1,21 @@
-// const http = require("http");
-// const fs = require("fs");
-
-// http
-//   .createServer((req, res) => {
-//     const url = req.url;
-//     const method = req.method;
-//     if (url === "/") {
-//       res.write("<html>");
-//       res.write("<head><title>Enter Message</title></head>");
-//       res.write(
-//         '<body><form action="/message" method="POST"><input type="text" name="message"></input><br /><button type="submit">Send</button></form></body>'
-//       );
-//       res.write("</html>");
-//       return res.end();
-//     }
-//     if (req.url == "/message" && method == "POST") {
-//       fs.writeFileSync("message.txt", "Lorem ipsum");
-//       res.statusCode = 302;
-//       res.setHeader("location", "/");
-//       return res.end();
-//     }
-//     // console.log(req.url, req.method, req.headers);
-//     res.setHeader("Content-Type", "text/html");
-//     res.write("<html>");
-//     res.write("<head><title>My First Page</title></head>");
-//     res.write(
-//       '<body><h1 style="text-align: center; margin-top: 3rem;">Welcome to Node.js</h1></body>'
-//     );
-//     res.write("</html>");
-//     res.end();
-//   })
-//   .listen(3000);
-
 const http = require("http");
-const routes = require("./routes");
+const path = require("path");
 
-http.createServer(routes).listen(3000);
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const server = http.createServer(app);
+
+const adminData = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/admin", adminData.routes);
+app.use(shopRoutes);
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+server.listen(3000);
