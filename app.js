@@ -9,6 +9,9 @@ const server = http.createServer(app);
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
+app.set("view engine", "pug");
+app.set("view", "view");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
